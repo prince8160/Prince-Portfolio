@@ -396,6 +396,9 @@
 
   // 3D Card Tilt Effect
   function initCardTilts() {
+    if (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      return;
+    }
     document.querySelectorAll('.tilt-card').forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -419,6 +422,9 @@
 
   // Magnetic Buttons
   function initMagneticButtons() {
+    if (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      return;
+    }
     document.querySelectorAll('.magnetic-btn').forEach((btn) => {
       btn.addEventListener('mousemove', (e) => {
         const rect = btn.getBoundingClientRect();
