@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume — Kala Prince | Creative Web Developer & UI Engineer</title>
+  <meta name="description" content="Official Resume of Kala Prince — Creative Web Developer specializing in high-performance frontend web development and UI engineering.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #060609;
+      --bg-surface: rgba(16, 16, 26, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --primary-pink: #f43f5e;
+      --primary-purple: #a855f7;
+      --gradient-main: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #ec4899 100%);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.75);
+      --text-muted: rgba(255, 255, 255, 0.45);
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-full: 9999px;
+      --radius-md: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Background Glow */
+    .bg-glow {
+      position: fixed;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, rgba(168, 85, 247, 0.08) 50%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top Action Bar */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--bg-surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .brand-title span {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge-resume {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem;
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      border-radius: var(--radius-full);
+      color: var(--primary-pink);
+    }
+
+    /* Zoom Controls */
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      padding: 0.25rem 0.6rem;
+    }
+
+    .zoom-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .zoom-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .zoom-level {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 44px;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Actions */
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.15rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--gradient-main);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(244, 63, 94, 0.35);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(244, 63, 94, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      font-size: 0.9rem;
+    }
+
+    /* Resume Document Stage */
+    .resume-stage {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2.5rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+      overflow: auto;
+    }
+
+    .resume-wrapper {
+      max-width: 860px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top center;
+    }
+
+    .resume-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+      image-rendering: auto;
+    }
+
+    /* Floating Quick Bar for Mobile */
+    .mobile-float-actions {
+      display: none;
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+      gap: 0.6rem;
+      background: rgba(14, 14, 22, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .toolbar {
+        padding: 0.75rem 1rem;
+      }
+
+      .zoom-controls {
+        display: none;
+      }
+
+      .btn-print,
+      .btn-back {
+        display: none;
+      }
+
+      .resume-stage {
+        padding: 1.25rem 0.75rem 5rem;
+      }
+
+      .resume-wrapper {
+        border-radius: 8px;
+      }
+
+      .mobile-float-actions {
+        display: flex;
+      }
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      .toolbar,
+      .bg-glow,
+      .mobile-float-actions {
+        display: none !important;
+      }
+
+      .resume-stage {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .resume-wrapper {
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        transform: none !important;
+      }
+
+      .resume-img {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Header Action Bar -->
+  <header class="toolbar">
+    <a href="index.html" class="toolbar-brand" title="Back to Portfolio">
+      <span class="brand-title">KALA <span>PRINCE</span></span>
+      <span class="badge-resume">RESUME</span>
+    </a>
+
+    <!-- Interactive Zoom Controls -->
+    <div class="zoom-controls" aria-label="Zoom Controls">
+      <button class="zoom-btn" id="zoom-out" title="Zoom Out" aria-label="Zoom Out">−</button>
+      <span class="zoom-level" id="zoom-level">100%</span>
+      <button class="zoom-btn" id="zoom-in" title="Zoom In" aria-label="Zoom In">+</button>
+      <button class="zoom-btn" id="zoom-reset" title="Reset Zoom" aria-label="Reset Zoom" style="font-size: 0.72rem; width: auto; padding: 0 0.35rem;">Fit</button>
+    </div>
+
+    <!-- Toolbar Action Buttons -->
+    <div class="toolbar-actions">
+      <button class="btn btn-secondary btn-print" onclick="window.print()" title="Print Resume">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+        <span>Print</span>
+      </button>
+
+      <a href="assets/Resume.png" download="Kala_Prince_Resume.png" class="btn btn-primary" title="Download Resume Image">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>Download Resume</span>
+      </a>
+
+      <a href="index.html" class="btn btn-secondary btn-back" title="Back to Portfolio">
+        <span>Portfolio ↗</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Resume Canvas / Document Stage -->
+  <main class="resume-stage" id="resume-stage">
+    <div class="resume-wrapper" id="resume-wrapper">
+      <img src="assets/Resume.png" alt="Kala Prince — Official Resume" class="resume-img" id="resume-img">
+    </div>
+  </main>
+
+  <!-- Mobile Quick Action Floating Bar -->
+  <div class="mobile-float-actions" aria-label="Mobile Actions">
+    <a href="assets/Resume.png" download="Kala_Prince_Resume.png" class="btn btn-primary btn-sm">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      <span>Download Resume</span>
+    </a>
+    <a href="index.html" class="btn btn-secondary btn-sm">
+      <span>Back</span>
+    </a>
+  </div>
+
+  <!-- Zoom & Pan Logic -->
+  <script>
+    (() => {
+      let scale = 1;
+      const minScale = 0.6;
+      const maxScale = 2.2;
+      const step = 0.15;
+
+      const wrapper = document.getElementById('resume-wrapper');
+      const zoomLevelText = document.getElementById('zoom-level');
+      const zoomInBtn = document.getElementById('zoom-in');
+      const zoomOutBtn = document.getElementById('zoom-out');
+      const zoomResetBtn = document.getElementById('zoom-reset');
+
+      function updateScale(newScale) {
+        scale = Math.max(minScale, Math.min(maxScale, newScale));
+        wrapper.style.transform = `scale(${scale})`;
+        zoomLevelText.textContent = `${Math.round(scale * 100)}%`;
+      }
+
+      zoomInBtn?.addEventListener('click', () => updateScale(scale + step));
+      zoomOutBtn?.addEventListener('click', () => updateScale(scale - step));
+      zoomResetBtn?.addEventListener('click', () => updateScale(1));
+
+      // Mouse Wheel Zoom with Ctrl Key
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey) {
+          e.preventDefault();
+          if (e.deltaY < 0) {
+            updateScale(scale + 0.1);
+          } else {
+            updateScale(scale - 0.1);
+          }
+        }
+      }, { passive: false });
+    })();
+  </script>
+
+</body>
+</html>
